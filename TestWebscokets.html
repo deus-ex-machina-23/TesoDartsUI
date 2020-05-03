@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="js/game_init.js"></script>
+  </head>
+  <body>
+    <h1>Dart demo</h1>
+    <br>
+    cam 000: <button onclick="send(0, 'lens_calibrate')">Calibrate Lens</button><button onclick="send(0, 'board_calibrate')">Calibrate Board</button><br>
+    cam 120: <button onclick="send(1, 'lens_calibrate')">Calibrate Lens</button><button onclick="send(1, 'board_calibrate')">Calibrate Board</button><br>
+    cam 240: <button onclick="send(2, 'lens_calibrate')">Calibrate LEns</button><button onclick="send(2, 'board_calibrate')">Calibrate Board</button><br>
+    <br>
+    <button onclick="send(null, 'start')">Start detection</button><button onclick="send(null, 'stop')">Stop detection</button><br>
+    <br>
+    <pre id="log"></pre>
+  </body>
+</html>
