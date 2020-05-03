@@ -1,0 +1,18 @@
+# GIT Ignore
+
+# IntelliJ specific files/directories
+out
+.idea
+*.ipr
+*.iws
+*.iml
+
+# Eclipse specific files/directories
+.classpath
+.project
+.settings
+.metadata
+generated-sources
+
+# NetBeans specific files/directories
+.nbattrs
