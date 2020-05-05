@@ -1,5 +1,8 @@
 # GIT Ignore
 
+#OSX
+.DS_Store
+
 # IntelliJ specific files/directories
 out
 .idea
