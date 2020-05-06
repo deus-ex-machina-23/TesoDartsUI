@@ -19,14 +19,17 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <h1 class="navbar-brand">Teso Darts</h1>
-        </div>
-      </div>
-      </div>
-    </nav>
+  <div class="layer">
+  </div>
+
+  <nav class="navbar navbar-dark">
+    <a class="navbar-brand" href="#">
+      <img src="img/logo.png" height="35" alt="teso logo">
+    </a>
+    <form class="form-inline my-1">
+      <button class="btn red-gradient addBtn mt-1 btn-sm my-0" onclick="window.location.reload();">New Game</button>
+    </form>
+  </nav>
 
     <!--Modal: Login with Avatar Form-->
     <div class="modal fade" id="main_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -37,7 +40,7 @@
 
           <!--Header-->
           <div class="modal-header">
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%281%29.jpg" alt="avatar" class="rounded-circle img-responsive">
+            <img src="img/dart_avatar.png" alt="avatar" class="rounded-circle img-responsive">
           </div>
           <!--Body-->
           <div class="modal-body text-center mb-1">
@@ -55,7 +58,7 @@
             <div class="md-form ml-0 mr-0" id="add_players">
                 <input type="text" id="p_input" class="form-control form-control-sm ml-0">
                 <label data-error="wrong" data-success="right" for="p_input" class="ml-0">Player</label>
-                <button onclick="newElement()" class="btn blue-gradient addBtn">Add</button>
+                <button onclick="newElement()" class="btn green-gradient addBtn">Add</button>
             </div>
 
             <div class="md-form ml-0 mr-0">
@@ -74,12 +77,11 @@
     </div>
     <!--Modal: Login with Avatar Form-->
 
-    <div class="text-center">
-      <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#main_modal">New game</a>
-    </div>
-
     <div class="container-fluid text-center">
       <div class="row content">
+        <div class="col-sm-3">
+
+        </div>
         <div class="col-sm-12">
           <!--<div class="col-sm-12" style="visibility: hidden">
             cam 000: <button onclick="send(0, 'lens_calibrate')">Calibrate Lens</button><button onclick="send(0, 'board_calibrate')">Calibrate Board</button><br>
@@ -90,15 +92,27 @@
             <br>
             <pre id="log"></pre>
           </div>-->
-          <div id="throw_dart">
-            <h2 style="margin:5px">Throw dart</h2>
-            <input type="text" id="d_input" placeholder="dart">
-            <button onclick="throwDart()" class="addBtn">Add</button>
+
+          <div class="row bottom-line">
+            <div class="col-sm-12 player-score">
+              <h2>Round</h2>
+              <h1 id="round">0</h1>
+            </div>
+          </div>
+          <div class="row bottom-line">
+            <div class="col-sm-12 player-score">
+              <h2>Players</h2>
+            </div>
           </div>
           <br>
-
           <div class="row" id="game_players">
+          </div>
 
+          <div class="row">
+            <div class="text-center mt-4" id="throw_dart">
+              <input type="text" id="d_input" placeholder="dart" class="form-control form-control-sm ml-0">
+              <button class="btn red-gradient addBtn mt-1" onclick="throwDart()">Throw</button>
+            </div>
           </div>
 
       </div>
@@ -106,7 +120,7 @@
 
 
 
-  <footer class="container-fluid text-center">
+  <footer class="container-fluid text-center fixed-bottom">
     <p>Teso Darts</p>
   </footer>
 

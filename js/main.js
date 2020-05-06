@@ -28,11 +28,12 @@ function startGame() {
     for (var i = 0; i < players.length; i++) {
         names.push(players.item(i).id);
         var col = document.createElement("div");
-        col.className = "col-sm-" + Math.floor(12/players.length);
+        col.className = "col-sm-" + Math.max(4, Math.floor(12/players.length));
         document.getElementById("game_players").appendChild(col);
         var div = document.createElement("div");
         div.id = "player_" + i;
-        var h = document.createElement("H1"); // Create the H1 element
+        div.className = "player-score";
+        var h = document.createElement("H2"); // Create the H1 element
         var t = document.createTextNode(players.item(i).id); // Create a text element
         h.appendChild(t);
         div.appendChild(h);
@@ -53,15 +54,18 @@ function startGame() {
         for (var i = 0; i < players.length; i++) {
             names.push(players.item(i).id);
             var id = "player_" + i;
-            playerDisplay = document.getElementById(id);
-            playerDisplay.getElementsByTagName("h1")[1].innerHTML = 301 - this.playerScoreByIndex(i);
+            var playerDisplay = document.getElementById(id);
+            playerDisplay.getElementsByTagName("h1")[0].innerHTML = 301 - this.playerScoreByIndex(i);
             if(this.playerTurn == i) {
-                playerDisplay.style.backgroundColor = 'green';
+                playerDisplay.style.border = '2px solid white';
             }
             else {
-                playerDisplay.style.backgroundColor = 'transparent';
+                playerDisplay.style.border = '0px';
             }
         }
+
+        var round = document.getElementById("round");
+        round.innerHTML = this.round;
 
         if(this.winner != undefined) {
             alert('Player Number' + this.winner + 1 + ' wins!');

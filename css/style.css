@@ -1,12 +1,23 @@
 body {
     margin: 0;
     min-width: 250px;
-    background-color: #162a4a !important;
+    background-color: black !important;
     font-family: 'Exo', sans-serif;
     color: white !important;
-    background-image: url("../img/darts_navbar.jpg");
-    background-repeat: no-repeat;
+    background: url("../img/background.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
+}
+
+.layer {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .navbar-header>h1 {
@@ -14,7 +25,15 @@ body {
 }
 
 .modal-content {
-    background: #162a4a !important;
+    background: #2b2d2f !important;
+}
+
+.modal-body {
+    color: white !important;
+}
+
+.md-form>input {
+    color: white !important;
 }
 
 /* Include the padding and border in an element's total width and height */
@@ -82,5 +101,35 @@ ul li:hover {
 }
 
 .red-gradient {
-    background: linear-gradient(40deg, #ff8abb, #a2021e) !important;
+    background: linear-gradient(40deg, #de4c40, #620308) !important;
+}
+
+.green-gradient {
+    background: linear-gradient(40deg, #3ece0d, #0f4803) !important;
+}
+
+.player-score>h1 {
+    font-size: 100px;
+    font-weight: bold;
+}
+
+.player-score>h2 {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.bottom-line {
+    border-bottom: 4px solid white;
+    padding: 10px;
+}
+
+.md-form input[type="text"]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1px solid #3ece0d !important;
+    box-shadow: 0 1px 0 0 #3ece0d !important;
+}
+.md-form input[type="text"]:not(.browser-default):focus:not([readonly])+label {
+    color: #3ece0d !important;
+}
+.md-form>ul {
+    color: black !important;
 }
