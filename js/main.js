@@ -2,26 +2,40 @@ $(document).ready(function(){
 
     $("#main_modal").modal();
 
+    $('#game_select').on('click',function() {
+        //alert($(this).val());
+        console.log($(this).val());
+    });
+
 });
 
+$(document).on("change","select",function(){
+    $("option[value=" + this.value + "]", this)
+        .attr("selected", true).siblings()
+        .removeAttr("selected")
+});
+
+// input 20, 2x20, 3x20
 function throwDart() {
     var input = document.getElementById("d_input").value;
 
     var value = input.split('x');
 
-    var field = value[0];
-    var multiplier = value[1] === undefined ? 1 : value[1];
+    var multiplier = value[0];
+    var field = value[1];
 
-    if (field < 21 && multiplier < 4) {
+    if (field === undefined) {
+        field = value[0];
+        multiplier = 1;
+    }
+
+    if ((field < 21 || field == 25 || field == 50) && multiplier < 4) {
         DartBoard.throwDart("test", field, multiplier, this);
     }
 }
 
-function startGame() {
-
-    // get players
-    var players = document.getElementById("players").getElementsByTagName("li");
-    //alert(players.);
+// Creates Scoreboard UI and returns players names as Array
+function createScoreboard(points, players) {
 
     var names = Array();
 
@@ -38,13 +52,26 @@ function startGame() {
         h.appendChild(t);
         div.appendChild(h);
         var h = document.createElement("H1"); // Create the H1 element
-        var t = document.createTextNode("301"); // Create a text element
+        var t = document.createTextNode(points); // Create a text element
         h.appendChild(t);
         div.appendChild(h);
         col.appendChild(div);
     }
 
-    game = new Game_01(names, 3);
+    return names;
+}
+
+function startGame() {
+
+    var gameSelect = document.getElementById("game_select");
+    var gameType = gameSelect.options[gameSelect.selectedIndex].value;
+    var gamePoints = gameSelect.options[gameSelect.selectedIndex].innerHTML;
+    var players = document.getElementById("players").getElementsByTagName("li");
+
+    // get players
+    var names = createScoreboard(gamePoints,players);
+
+    game = new Game_01(names, gameType);
 
     $("#main_modal").modal('hide');
 
@@ -55,12 +82,12 @@ function startGame() {
             names.push(players.item(i).id);
             var id = "player_" + i;
             var playerDisplay = document.getElementById(id);
-            playerDisplay.getElementsByTagName("h1")[0].innerHTML = 301 - this.playerScoreByIndex(i);
+            playerDisplay.getElementsByTagName("h1")[0].innerHTML = gamePoints - this.playerScoreByIndex(i);
             if(this.playerTurn == i) {
-                playerDisplay.style.border = '2px solid white';
+                playerDisplay.style.borderBottom = '5px solid #3ece0d';
             }
             else {
-                playerDisplay.style.border = '0px';
+                playerDisplay.style.borderBottom = '0px';
             }
         }
 
@@ -68,7 +95,7 @@ function startGame() {
         round.innerHTML = this.round;
 
         if(this.winner != undefined) {
-            alert('Player Number' + this.winner + 1 + ' wins!');
+            alert(this.winner + ' wins!');
         }
 
     }
