@@ -27,7 +27,7 @@ Game.prototype.addDart = function(name, score, isDouble) {
 
 
     if(this.currentPlayer().isWinner()) {
-        this.winner = this.playerTurn;
+        this.winner = this.currentPlayerName();
         this.updateView();
         return true;
     }
