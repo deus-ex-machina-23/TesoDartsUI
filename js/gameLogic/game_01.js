@@ -37,6 +37,11 @@ Game_01.prototype.playerScore = function(player) {
     return score;
 }
 
+Game_01.prototype.numberOfDartsThrown = function() {
+    var player = this.currentPlayer()
+    return player.currentRound().numberOfDartsThrown();
+}
+
 Game_01.prototype.roundIsBust = function() {
     var player = this.currentPlayer()
     var dartsThrown = player.currentRound().numberOfDartsThrown() > 0;

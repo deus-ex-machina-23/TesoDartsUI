@@ -93,6 +93,8 @@ function startGame() {
 
         var round = document.getElementById("round");
         round.innerHTML = this.round;
+        var darts = document.getElementById("darts");
+        darts.innerHTML = 3- this.numberOfDartsThrown();
 
         if(this.winner != undefined) {
             alert(this.winner + ' wins!');
